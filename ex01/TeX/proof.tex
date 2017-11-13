@@ -1,0 +1,24 @@
+\begin{proof}
+    Suppose that the statement is false. This conditional statement being false means that \(B\) and \(C\) are two points such that:
+    \begin{itemize}
+        \item for every pair \(D,E\) of intersection points of a generic line through \(O\) with the two sides of the angle, \(\TriangleArea{ABC} \leq \TriangleArea{ADE}\) (that is, the triangle \(\Triangle{ABC}\) has minimal area);
+        \item \(\Segment{BO} \ne \Segment{CO}\).
+    \end{itemize}
+    Pass a line through \(O\) such that \(\Segment{DO} = \Segment{EO}\) (where \(D\) and \(E\) are the intersection points of the line with the two sides of the angle). Clearly, \(B \neq D\) and \(C \neq E\) (otherwise it would be true that \(\Segment{BO} = \Segment{CO}\)).
+    \begin{figure}[H]
+        \centering
+        \input{../Images/different-points.tex}
+    \end{figure}
+    Draw a line through \(D\) and parallel to \(\Segment{AC}\). Let \(B'\) be the intersection between this line and the extension of \(\Segment{BC}\). Clearly, it's true that \(\TriangleArea{CEO} = \TriangleArea{B'DO}\) (since \(\Triangle{CEO} \cong \Triangle{B'DO}\)).
+    \begin{figure}[H]
+        \centering
+        \input{../Images/congruent-triangles.tex}
+    \end{figure}
+    Moreover, \(\TriangleArea{BB'D} \neq 0\), since \(B \neq D\). Therefor, \(\TriangleArea{BDO} < \TriangleArea{CEO}\).\par
+    I also know that \(\TriangleArea{ADE} = \TriangleArea{ABC} - \TriangleArea{CEO} + \TriangleArea{BDO}\).
+    \begin{figure}[H]
+        \centering
+        \input{../Images/different-triangles.tex}
+    \end{figure}
+    Thus, \(\TriangleArea{ADE} < \TriangleArea{ABC}\) and I can conclude that \(\Triangle{ABC}\) has not a minimal area. Since I have a contradiction, I was wrong to assume that the statement was false: it must be true.
+\end{proof}
