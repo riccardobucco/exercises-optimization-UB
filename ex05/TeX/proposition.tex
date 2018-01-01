@@ -1,0 +1,8 @@
+\begin{proposition}
+    Let \(f\) be a real function on \(\R^n\). Also let \(x_0 \in \R^n\), \(z \in \R^n\) and \(\theta \in \R\). Define
+    \[F(\theta)=f(x_0 + \theta z)\]
+    and suppose that we are looking for the minimum of \(F\) (that is, for the minimum of \(f\) in the direction \(z\) through the point \(x_0\)). Let \(x_0 + \theta_1 z\), \(x_0 + \theta_2 z\) and \(x_0 + \theta_3 z\) be three points where \(f\) is evaluated. Show that the minimum predicted by applying the quadratic approximation method is \(x_0 + \theta^* z\), where
+    \[\theta^* = \frac{[\theta_2^2-\theta_3^2]F(\theta_1) + [\theta_3^2-\theta_1^2]F(\theta_2) + [\theta_1^2-\theta_2^2]F(\theta_3)}{2[(\theta_2 - \theta_3)F(\theta_1) + (\theta_3 - \theta_1)F(\theta_2) + (\theta_1 - \theta_2)F(\theta_3)]}\]
+    and it is indeed the minimum of the parabola passing through the above three points if
+    \[\frac{(\theta_2-\theta_3)F(\theta_1) + (\theta_3-\theta_1)F(\theta_2) + (\theta_1-\theta_2)F(\theta_3)}{(\theta_2-\theta_3)(\theta_3-\theta_1)(\theta_1-\theta_2)}<0\]
+\end{proposition}
