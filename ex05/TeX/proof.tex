@@ -1,0 +1,129 @@
+\begin{proof}
+    Suppose we evaluate \(f\) in three points: \(x_0 + \theta_1 z\), \(x_0 + \theta_2 z\) and \(x_0 + \theta_3 z\). That is, we know the values of \(F(\theta_1)\), \(F(\theta_2)\) and \(F(\theta_3)\).\par
+    Let's now apply the quadratic method (\(\phi(\theta) = a + b\theta + c\theta^2\), with \(F(\theta_i) = \phi(\theta_i)\) for \(i=1,2,3\)). In order to find the coefficients \(a\), \(b\) and \(c\), we have to solve the following system:
+    \[
+        \begin{cases}
+            a + b\theta_1 + c\theta_1^2 = F(\theta_1) \\
+            a + b\theta_2 + c\theta_2^2 = F(\theta_2) \\
+            a + b\theta_3 + c\theta_1^3 = F(\theta_3)
+        \end{cases}
+    \]
+    This is a possible way to solve it:
+    \[
+        \begin{cases}
+            a = F(\theta_1) - b\theta_1 - c\theta_1^2 \\
+            a = F(\theta_2) - b\theta_2 - c\theta_2^2 \\
+            a = F(\theta_2) - b\theta_3 - c\theta_1^3
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            F(\theta_2) - b\theta_2 - c\theta_2^2 = F(\theta_1) - b\theta_1 - c\theta_1^2 \\
+            * \\
+            F(\theta_2) - b\theta_2 - c\theta_2^2 = F(\theta_2) - b\theta_3 - c\theta_1^3
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            b = \frac{F(\theta_1) - F(\theta_2)}{\theta_1 - \theta_2} - c\frac{\theta_1^2 - \theta_2^2}{\theta_1 - \theta_2} \\
+            * \\
+            b = \frac{F(\theta_3) - F(\theta_2)}{\theta_3 - \theta_2} - c\frac{\theta_3^2 - \theta_2^2}{\theta_3 - \theta_2}
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            * \\
+            * \\
+            \frac{F(\theta_1) - F(\theta_2)}{\theta_1 - \theta_2} - c\frac{\theta_1^2 - \theta_2^2}{\theta_1 - \theta_2} = \frac{F(\theta_3) - F(\theta_2)}{\theta_3 - \theta_2} - c\frac{\theta_3^2 - \theta_2^2}{\theta_3 - \theta_2}
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            * \\
+            * \\
+            \frac{F(\theta_1) - F(\theta_2)}{\theta_1 - \theta_2} - \frac{F(\theta_3) - F(\theta_2)}{\theta_3 - \theta_2} = c(\theta_1 + \theta_2) - c(\theta_3 + \theta_2)
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            * \\
+            * \\
+            \frac{F(\theta_1) - F(\theta_2)}{\theta_1 - \theta_2} - \frac{F(\theta_3) - F(\theta_2)}{\theta_3 - \theta_2} = c(\theta_1 - \theta_3)
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            * \\
+            * \\
+            \frac{[F(\theta_1) - F(\theta_2)](\theta_3 - \theta_2) - [F(\theta_3) - F(\theta_2)](\theta_1 - \theta_2)}{(\theta_1 - \theta_2)(\theta_3 - \theta_2)} = \frac{c(\theta_1 - \theta_3)(\theta_1 - \theta_2)(\theta_3 - \theta_2)}{(\theta_1 - \theta_2)(\theta_3 - \theta_2)}
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            * \\
+            * \\
+            c = \frac{[F(\theta_1) - F(\theta_2)](\theta_3 - \theta_2) - [F(\theta_3) - F(\theta_2)](\theta_1 - \theta_2)}{(\theta_1 - \theta_3)(\theta_1 - \theta_2)(\theta_3 - \theta_2)}
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            * \\
+            * \\
+            c = \frac{F(\theta_1)(\theta_3 - \theta_2) + F(\theta_2)(\theta_1 - \theta_3) - F(\theta_3)(\theta_1 - \theta_2)}{(\theta_1 - \theta_3)(\theta_1 - \theta_2)(\theta_3 - \theta_2)}
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            * \\
+            * \\
+            c = \frac{F(\theta_1)(\theta_3 - \theta_2) + F(\theta_2)(\theta_1 - \theta_3) + F(\theta_3)(\theta_2 - \theta_1)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)}
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            b = \frac{F(\theta_1) - F(\theta_2)}{\theta_1 - \theta_2} - \frac{F(\theta_1)(\theta_3 - \theta_2) + F(\theta_2)(\theta_1 - \theta_3) + F(\theta_3)(\theta_2 - \theta_1)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)}\cdot\frac{\theta_1^2 - \theta_2^2}{\theta_1 - \theta_2} \\
+            * \\
+            *
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            b = \frac{[F(\theta_1) - F(\theta_2)](\theta_3 - \theta_1)(\theta_2 - \theta_3) - [F(\theta_1)(\theta_3 - \theta_2) + F(\theta_2)(\theta_1 - \theta_3) + F(\theta_3)(\theta_2 - \theta_1)](\theta_1 + \theta_2)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)} \\
+            * \\
+            *
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            b = \frac{F(\theta_1)[(\theta_3 - \theta_1)(\theta_2 - \theta_3) - (\theta_3 - \theta_2)(\theta_1 + \theta_2)] - F(\theta_2)[(\theta_3 - \theta_1)(\theta_2 - \theta_3) + (\theta_1 - \theta_3)(\theta_1 + \theta_2)] - F(\theta_3)(\theta_2^2 - \theta_1^2)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)} \\
+            * \\
+            *
+        \end{cases}
+    \]
+    \[
+        \begin{cases}
+            b = \frac{F(\theta_1)(\theta_2^2 - \theta_3^2) + F(\theta_2)(\theta_3^2 - \theta_1^2) + F(\theta_3)(\theta_1^2 - \theta_2^2)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)} \\
+            * \\
+            *
+        \end{cases}
+    \]
+    We don't need to find the value of \(a\) for our purposes. We just need \(b\) and \(c\), which are respectively:
+    \[b = \frac{F(\theta_1)(\theta_2^2 - \theta_3^2) + F(\theta_2)(\theta_3^2 - \theta_1^2) + F(\theta_3)(\theta_1^2 - \theta_2^2)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)}\]
+    \[c = \frac{F(\theta_1)(\theta_3 - \theta_2) + F(\theta_2)(\theta_1 - \theta_3) + F(\theta_3)(\theta_2 - \theta_1)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)}\]
+    The minimum of the quadratic function \(\phi\) (if it has a minimum) can be found analytically by setting \(\phi'(\theta) = 0\), and, for a first approximation of a minimum of \(f\) we obtain
+    \[\theta^* = -\frac{b}{2c}\]
+    Let's now try to replace the variables with the values that we have previously found:
+    \begin{equation*}
+        \begin{split}
+            \theta^* &= -\frac{b}{2c} \\
+            &= -\frac{\frac{F(\theta_1)(\theta_2^2 - \theta_3^2) + F(\theta_2)(\theta_3^2 - \theta_1^2) + F(\theta_3)(\theta_1^2 - \theta_2^2)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)}}{2\cdot\frac{F(\theta_1)(\theta_3 - \theta_2) + F(\theta_2)(\theta_1 - \theta_3) + F(\theta_3)(\theta_2 - \theta_1)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)}} \\
+            &= -\frac{F(\theta_1)(\theta_2^2 - \theta_3^2) + F(\theta_2)(\theta_3^2 - \theta_1^2) + F(\theta_3)(\theta_1^2 - \theta_2^2)}{2\cdot [F(\theta_1)(\theta_3 - \theta_2) + F(\theta_2)(\theta_1 - \theta_3) + F(\theta_3)(\theta_2 - \theta_1)]} \\
+            &= \frac{F(\theta_1)(\theta_2^2 - \theta_3^2) + F(\theta_2)(\theta_3^2 - \theta_1^2) + F(\theta_3)(\theta_1^2 - \theta_2^2)}{2\cdot [F(\theta_1)(\theta_2 - \theta_3) + F(\theta_2)(\theta_3 - \theta_1) + F(\theta_3)(\theta_1 - \theta_2)]}
+        \end{split}
+    \end{equation*}
+    which is exactly the value we were looking for.\par
+    In the quadratic method we have to assume that \(c>0\) (otherwise the parabola has a maximum and so the point \(\theta^*\) is unusable). That is, \(\theta^*\) is the minimum of the parabola passing through the three points if
+    \[\frac{F(\theta_1)(\theta_3 - \theta_2) + F(\theta_2)(\theta_1 - \theta_3) + F(\theta_3)(\theta_2 - \theta_1)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)} > 0\]
+    which is the same as saying
+    \[\frac{F(\theta_1)(\theta_2 - \theta_3) + F(\theta_2)(\theta_3 - \theta_1) + F(\theta_3)(\theta_1 - \theta_2)}{(\theta_3 - \theta_1)(\theta_1 - \theta_2)(\theta_2 - \theta_3)} < 0\]
+\end{proof}
