@@ -1,7 +1,32 @@
 \begin{proof}
     First I can write the Lagrangian function for the problem (the sum of the objective function and the weighted constraints):
-    \[L(x,y,\mu_1,\mu_2) = (x-a)^2+(y-b)^2+xy + \mu_1(x-1) + \mu_2(y-2)\]
-    The Kuhn-Tucker conditions (which are necessary, but not sufficient, for a point to be a minimum) are:
+    \[L(x,y,\mu_1,\mu_2,\mu_3,\mu_4) = (x-a)^2 + (y-b)^2 + xy + \mu_1(x-1) + \mu_2(y-2) + \mu_3(-x) + \mu_4(-y)\]
+    Then, the Kuhn-Tucker conditions become:
+    \begin{gather}
+        2(x-a) + y + \mu_1 - \mu_3 = 0 \label{1} \\
+        2(y-b) + x + \mu_2 - \mu_4 = 0 \label{2} \\
+        \mu_1(x - 1) = 0 \label{3} \\
+        \mu_2(y - 1) = 0 \label{4} \\
+        \mu_3(-x) = 0 \label{5} \\
+        \mu_4(-y) = 0 \label{6} \\
+        \mu_1 \geq 0 \label{7} \\
+        \mu_2 \geq 0 \label{8} \\
+        \mu_3 \geq 0 \label{9} \\
+        \mu_4 \geq 0 \label{10} \\
+        x \geq 0 \label{11} \\
+        y \geq 0 \label{12} \\
+        x - 1 \leq 0 \label{13} \\
+        y - 1 \leq 0 \label{14}
+    \end{gather}
+    Notice that in the conditions I have also included the constraints of the given problem (\eqref{11}, \eqref{12}, \eqref{13} and \eqref{14}). I can now try to reduce the number of variables, in order to simplify the problem. Specifically, I can remove \(\mu_3\) and \(\mu_4\). First, \eqref{1} and \eqref{2} can be rewritten as
+    \[2(x-a) + y + \mu_1 - \mu_3 = 0 \rightarrow 2(x-a) + y + \mu_1 = \mu_3\]
+    \[2(y-b) + x + \mu_2 - \mu_4 = 0 \rightarrow 2(y-b) + x + \mu_2 = \mu_4\]
+    Then, I can rewrite \eqref{5}, \eqref{6}, \eqref{9} and \eqref{10} accordingly:
+    \[\mu_3(-x) = 0 \rightarrow x[2(x-a) + \mu_1 + y] = 0\]
+    \[\mu_4(-y) = 0 \rightarrow y[2(y-b) + \mu_2 + x] = 0\]
+    \[\mu_3 \geq 0 \rightarrow 2(x-a) + y + \mu_1 \geq 0\]
+    \[\mu_4 \geq 0 \rightarrow 2(y-b) + x + \mu_2 \geq 0\]
+    The Kuhn-Tucker conditions (which are necessary, but not sufficient, for a point to be a minimum) can be then rewritten as:
     \begin{gather}
         2(x-a) + \mu_1 + y \geq 0 \label{KKT1} \tag{KKT1} \\
         2(y-b) + \mu_2 + x \geq 0 \label{KKT2} \tag{KKT2} \\
@@ -172,5 +197,36 @@
         \caption{Graphical representation of the constraints on \(a\) and \(b\) related to each solution}
         \label{summary-graph}
     \end{figure}
-    Moreover, figure \ref{summary-graph} represents all the constraints on \(a\) and \(b\) related to each solution. As you can see, all the possible values of \(a\) and \(b\) have been taken into account and there is no solution which is valid among the same values of \(a\) and \(b\) (except for the values on the edges).
+    Moreover, figure \ref{summary-graph} represents all the constraints on \(a\) and \(b\) related to each solution. As you can see, all the possible values of \(a\) and \(b\) have been taken into account and there is no solution which is valid among the same values of \(a\) and \(b\) (except for the values on the edges).\par
+    Let's now compute the Hessian of the Lagrangian function:
+    \[
+        \nabla^2 L(x,y,\mu_1,\mu_2) =
+        \begin{bmatrix}
+            2 & 1 \\
+            1 & 2
+        \end{bmatrix}
+    \]
+    You can now notice that
+    \[\vec{z}^T \nabla^2 L(x,y,\mu_1,\mu_2) \vec{z} > 0, \forall \vec{z} \in \R^2, z \neq \vec{0}\]
+    indeed:
+    \[
+        \begin{bmatrix}
+            z_1 & z_2
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix}
+            2 & 1 \\
+            1 & 2
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix}
+            z_1 \\
+            z_2
+        \end{bmatrix}
+        = 2z_1^2 + 2z_2^2 + 2z_1z_2
+    \]
+    \[
+        z_1^2 + z_2^2 + z_1z_2 > 0 \iff z_1 \neq 0 \lor z_2 \neq 0
+    \]
+    Then, I can conclude that every pair of values \(x,y\) that I found is a solution for the original problem.
 \end{proof}
