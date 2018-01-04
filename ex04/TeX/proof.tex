@@ -1,0 +1,56 @@
+\begin{proof}
+    Suppose to evaluate \(f\) in three points \(x_1<x_2<x_3\). Suppose also that \(f(x_1)>f(x_2)\) and \(f(x_3)>f(x_2)\). Using the quadratic method we let \(\phi(x_i)=f(x_i), i=1,2,3\), with \(\phi(x)=a=bx=cx^2\). In order to find the values for the parameters \(a\), \(b\) and \(c\) we have to solve the following system:
+    \[
+        \begin{cases}
+            a + bx_1 + cx_1^2 = f(x_1) \\
+            a + bx_2 + cx_2^2 = f(x_2) \\
+            a + bx_3 + cx_3^2 = f(x_3)
+        \end{cases}
+    \]
+    In this case I'm only interested in studying the value of c. First, I can apply the elimination method using the first and second equation, and then I can do the same using the second and the third one:
+    \[
+        \begin{cases}
+            b(x_1 - x_2) + c(x_1^2 - x_2^2) = f(x_1) - f(x_2) \\
+            b(x_2 - x_3) + c(x_2^2 - x_3^2) = f(x_2) - f(x_3)
+        \end{cases}
+    \]
+    I can now go on using the substitution method. First, I can find \(b\) in the first equation
+    \[b = \frac{f(x_1)-f(x_2)}{x_1-x_2}-c\frac{x_1^2-x_2^2}{x_1-x_2} = \frac{f(x_1)-f(x_2)}{x_1-x_2}-c(x_1+x_2)\]
+    and then I can substitute the value I have found in the second equation
+    \[\left[\frac{f(x_1)-f(x_2)}{x_1-x_2}-c(x_1+x_2)\right](x_2 - x_3) + c(x_2^2 - x_3^2) = f(x_2) - f(x_3)\]
+    Now I just have to find \(c\):
+    \[\left[\frac{f(x_1)-f(x_2)}{x_1-x_2}-c(x_1+x_2) + c(x_2 + x_3)\right](x_2 - x_3) = f(x_2) - f(x_3)\]
+    \[\left[\frac{f(x_1)-f(x_2)}{x_1-x_2}+c(x_3-x_1)\right](x_2 - x_3) = f(x_2) - f(x_3)\]
+    \[\frac{f(x_1)-f(x_2)}{x_1-x_2}+c(x_3-x_1) = \frac{f(x_2) - f(x_3)}{x_2 - x_3}\]
+    \[c(x_3-x_1) = \frac{f(x_2) - f(x_3)}{x_2 - x_3} - \frac{f(x_1)-f(x_2)}{x_1-x_2}\]
+    \[c(x_3-x_1) = \frac{f(x_2) - f(x_3)}{x_2 - x_3} + \frac{f(x_1)-f(x_2)}{x_2-x_1}\]
+    \[c = \frac{\frac{f(x_2) - f(x_3)}{x_2 - x_3} + \frac{f(x_1)-f(x_2)}{x_2-x_1}}{(x_3-x_1)}\]
+    Notice that \(x_1 \neq x_2\), \(x_2 \neq x_3\) and \(x_1 \neq x_3\), so it's not a problem to divide by, respectively, \(x_1 - x_2\), \(x_2 - x_3\) and \(x_1 - x_3\).\par
+    Now that I have found a value for \(c\), I want to check whether it's always greater than \(0\) or not. First, you can notice that
+    \[f(x_3)-f(x_2)>0\]
+    \[f(x_1)-f(x_2)>0\]
+    because \(f(x_3)>f(x_2)\) and \(f(x_1)>f(x_2)\). Moreover
+    \[x_3-x_2>0\]
+    \[x_2-x_1>0\]
+    \[x_3-x_1>0\]
+    because \(x_1<x_2<x_3\). Therefore, it's also true that
+    \[\frac{f(x_2) - f(x_3)}{x_2 - x_3} + \frac{f(x_1)-f(x_2)}{x_2-x_1}>0\]
+    Since both the numerator and the denominator of \(c\) are greater than \(0\), I can conclude that \(c>0\).'\par
+    Now I have to prove that the predicted stationary point of \(\phi\) (\(u^* = -\frac{b}{2c}\)) is a minimum. Recall the following definition:
+    \begin{definition}[Global minimum point]
+        A real-valued function \(f\) defined on a domain \(X\) has a global minimum point at \(x^*\) if \(f(x^*)\leq f(x), \forall x \in X\).
+    \end{definition}
+    In order to prove that \(u^*\) is a minimum of the function \(\phi\), I have to show that the following inequality is true for all \(x \in \R\):
+    \[a + b\left(-\frac{b}{2c}\right) + c\left(-\frac{b}{2c}\right)^2 \leq a + bx + cx^2\]
+    Let's simplify it:
+    \[a + b\left(-\frac{b}{2c}\right) + c\left(-\frac{b}{2c}\right)^2 \leq a + bx + cx^2\]
+    \[b\left(-\frac{b}{2c}\right) + c\left(-\frac{b}{2c}\right)^2 \leq bx + cx^2\]
+    \[-\frac{b^2}{2c} + \frac{b^2}{4c} \leq bx + cx^2\]
+    \[-\frac{b^2}{4c} \leq bx + cx^2\]
+    \begin{equation}\label{1}
+        cx^2 + bx + \frac{b^2}{4c} \geq 0
+    \end{equation}
+    I can now study the discriminant of the quadratic equation \(cx^2 + bx + \frac{b^2}{4c} = 0\) associated to the inequality:
+    \[\Delta = b^2 - 4c\frac{b^2}{4c} = b^2 - b^2 = 0\]
+    Since \(\Delta = 0\) and \(c>0\), the inequality \eqref{1} is always true. I can conclude that \(-\frac{b}{2c}\) is a global minimum of \(\phi\).
+\end{proof}
