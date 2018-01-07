@@ -1,0 +1,19 @@
+\begin{proof}
+    Let's prove every statement.
+    \begin{enumerate}
+        \item Obviously, the function we're minimizing is a continuous one, because it's a sum of continuous functions. Moreover, the solution certainly lies in the convex hull of the points, so I can focus only on those points: I can restrict the domain of the function by choosing the convex hull of the points as a new domain. Since this new domain is a compact set, and since the function is continuous, the \emph{extreme value theorem} (Weierstrass) holds: the function attains a lowest value in its convex hull.\par
+        Let's now focus on a set of \(m\) points \(y_i \in\R^2\). If I want to find the minimum of the function
+        \[f = \sum_{i=1}^{m}w_i||x^*-y_i||, x^*\in\R^2, w_1, \dots w_m \geq 0\]
+        this condition must hold:
+        \begin{equation}\label{eq}
+            \frac{\delta f}{\delta x^*} = \sum_{i=1}^{m}w_i\frac{x^*-y_i}{||x^*-y_i||}=0
+        \end{equation}
+        If I want the mechanical model represented in picture \ref{mechanical-model} to be static, in the point \(x^*\) the sum of all the forces must be zero. I can represent a force as the the product between the scalar \(m_i\cdot g\) (the weight of the object and the magnitude of the force vector) and a unit vector \(\frac{x^*-y_i}{||x^*-y_i||_2}\) (representing the direction of the force vector). Now, if set \(w_i = m_i\cdot g\) (notice that \(m_i\cdot g\) is always positive), I get exactly the same equation as \eqref{eq}.
+        \item The solution is not always unique. For instance, if I have two points \(x_1, x_2 \in \R^2\) and \(w_1 = w_2 = 1\), I have infinite possible solutions: every point lying on the line segment between \(x_1\) and \(x_2\) is a possible solution to the problem, since the sum is always equal to the distance between the two points.
+        \item Let's create a real example. Assume that the length of each string is \(L\). The height of the table where the experiment takes place is also \(L\). Each string has a portion that lies on the table (whose length is \(||x^*-y_i||_2\)) and a portion that hangs down (whose length is \(L-||x^*-y_i||_2\)). Thus, the height of each object is \(h_i = L - (L - ||x^*-y_i||_2) = ||x^*-y_i||_2\). Recall now that we are minimizing the function
+        \[f = \sum_{i=1}^{m}w_i||x^*-y_i||, x^*\in\R^2, w_1, \dots w_m \geq 0\]
+        I can rewrite it
+        \[f = \sum_{i=1}^{m}w_i\cdot h_i\]
+        Again, as I did before, if I set \(w_i = m_i\cdot g\) (which is always a positive quantity) I get exactly the result I am looking for: minimization of the potential energy.
+    \end{enumerate}
+\end{proof}
