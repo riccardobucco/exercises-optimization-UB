@@ -1,0 +1,53 @@
+\begin{proof}
+    Instead of solving the problem
+    \begin{align*}
+        \text{maximize } & y^Tx \\
+        \text{subject to } & x^TQx\leq 1
+    \end{align*}
+    I can solve the related problem
+    \begin{align*}
+        \text{minimize } & -y^Tx \\
+        \text{subject to } & x^TQx\leq 1
+    \end{align*}
+    First I can write the Lagrangian function for the problem (the sum of the objective function and the weighted constraints):
+    \[L(x,\mu) = -yx^T + \mu(x^TQx - 1)\]
+    Then, the Kuhn-Tucker conditions become:
+    \begin{gather}
+        -y^T + 2\mu x^TQ = 0 \label{KKT1} \\
+        \mu(x^TQx - 1) = 0 \label{KKT2}
+    \end{gather}
+    In order to find the points that satisfy these conditions, I have to explore various cases. Specifically, \eqref{KKT2} must hold. It follows that:
+    \[\mu = 0 \lor x^TQx = 1\]
+    \begin{enumerate}
+        \item \(\mu = 0\)\par
+        Since \eqref{KKT1} must hold, one can easily conclude that \(y = 0\). However, minimizing (or maximizing) the null function is not interesting, because every point that respects the constraints is a solution. I can ignore this case.
+        \item \(x^TQx = 1\)\par
+        Let's find the value of \(x\), given that \eqref{KKT1} must hold:
+        \[y^T=2\mu x^TQ\]
+        \[y^TQ^{-1}=2\mu x^T\]
+        \begin{equation}\label{xT}
+            x^T = \frac{y^TQ^{-1}}{2\mu}
+        \end{equation}
+        Moreover, since \(Q^{-1}=(Q^{-1})^T\) (\(Q\) is symmetric and positive definite):
+        \begin{equation}\label{x}
+            x = \frac{(y^TQ^{-1})^T}{2\mu} = \frac{(Q^{-1})^T(y^T)^T}{2\mu} = \frac{Q^{-1}y}{2\mu}
+        \end{equation}
+        Now, I can plug the values found at \eqref{xT} and \eqref{x} into \(x^TQx=1\):
+        \[x^TQx = \frac{y^TQ^{-1}}{2\mu}Q\frac{Q^{-1}y}{2\mu} = \frac{y^TQ^{-1}QQ^{-1}y}{4\mu^2} = \frac{y^TQ^{-1}y}{4\mu^2} = 1\]
+        \[\mu^2=\frac{y^TQ^{-1}y}{4}\]
+        \[\mu=\frac{1}{2}\sqrt{y^TQ^{-1}y}\]
+        Is this solution an optimal one? Let's compute the Hessian of the Lagrangian function:
+        \[\nabla^2L(x,u) = 2\mu Q\]
+        You can now notice that
+        \[z^T\nabla^2L(x,u)z > 0, z\neq 0\]
+        This is due to the fact that \(Q\) is a positive definite matrix. Thus, I can conclude that this is an optimal solution for the problem. Which is the value of the function in this point? I just have to plug into the function of the original problem the solution (\(x\) and \(\mu\)) that I found:
+        \[y^Tx = x^Ty = \frac{y^TQ^{-1}}{2\mu}y = \frac{y^TQ^{-1}y}{2\frac{1}{2}\sqrt{y^TQ^{-1}y}} = \sqrt{y^TQ^{-1}y}\]
+        
+        Now I want to prove that the inequality \((x^Ty)^2 \leq (x^TQx)(y^TQ^{-1}y)\) holds. To show this fact, you just have to use the previous result: the optimal solution is given by \(x = \frac{Q^{-1}y}{2\mu}\) and \(\mu=\frac{1}{2}\sqrt{y^TQ^{-1}y}\), and the related value of the function is \(x^Ty = \sqrt{y^TQ^{-1}y}\).
+        \[(x^Ty)^2 \leq (x^TQx)(y^TQ^{-1}y)\]
+        \[(\sqrt{y^TQ^{-1}y})^2 \leq (x^TQx)(y^TQ^{-1}y)\]
+        \[(y^TQ^{-1}y \leq (x^TQx)(y^TQ^{-1}y)\]
+        \[y^TQ^{-1}y \leq (y^TQ^{-1}y)\]
+        Clearly the inequality is always true. Notice that the last step is given by the fact that we found the optimal solution setting \(x^TQx = 1\).
+    \end{enumerate}
+\end{proof}
